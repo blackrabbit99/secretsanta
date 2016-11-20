@@ -1,14 +1,14 @@
 const clone = require('clone');
+const SHIFT_BOUND = 3;
+const isLoop = (indicies) => indicies.length !== 0 && indicies.length !== SHIFT_BOUND;
+const getRandIndex = (indicies) => indicies[Math.floor(Math.random() * indicies.length)];
+const clearIndicies = (indicies, i) => {
+  indicies.splice(indicies.findIndex(v => v === i), 1);
+  return indicies;
+};
 
 function shuffleWhiShift(array) {
   let indicies = Array.from(Array(array.length).keys());
-  const SHIFT_BOUND = 3;
-  const isLoop = (indicies) => indicies.length !== 0 && indicies.length !== SHIFT_BOUND;
-  const getRandIndex = (indicies) => indicies[Math.floor(Math.random() * indicies.length)];
-  const clearIndicies = (indicies, i) => {
-    indicies.splice(indicies.findIndex(v => v === i), 1);
-    return indicies;
-  };
 
   while (isLoop(indicies)) {
     const firstIndex = getRandIndex(indicies);
@@ -32,10 +32,9 @@ function shuffleWhiShift(array) {
 }
 
 
-const secretSanta = participants => {
-  return shuffleWhiShift(clone(participants)).map((person, index) => {
-    return Object.assign(person, {felicitate: participants[index]});
-  });
-};
+const secretSanta = participants => shuffleWhiShift(clone(participants)).map((person, index) => {
+  return Object.assign(person, {felicitate: participants[index]});
+});
+
 
 exports.secretSanta = secretSanta;
