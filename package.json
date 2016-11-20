@@ -1,0 +1,14 @@
+{
+  "name": "@username/secretsanta",
+  "version": "1.0.0",
+  "description": "Secret santa generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clone": "^2.0.0",
+  }
+}
